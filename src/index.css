@@ -46,6 +46,7 @@ header > p {
 
 .meme > img {
   width: 100%;
+  display: block;
 }
 
 .meme > h2 {

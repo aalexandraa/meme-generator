@@ -43,6 +43,7 @@ class MemeGenerator extends Component {
       allowTaint: true,
       useCORS: true,
       scrollY: -window.scrollY,
+      scrollX: -window.scrollX,
     }).then(function (canvas) {
       var url = canvas.toDataURL("image/png");
       var link = document.createElement("a");
