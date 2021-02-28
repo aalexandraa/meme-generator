@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import html2canvas from "html2canvas";
 
 class MemeGenerator extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class MemeGenerator extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.randomMeme = this.randomMeme.bind(this);
+    this.capture = this.capture.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,21 @@ class MemeGenerator extends Component {
     this.setState({ randomImg: item.url });
   }
 
+  capture() {
+    const divToDisplay = document.getElementById("meme");
+    html2canvas(divToDisplay, {
+      allowTaint: true,
+      useCORS: true,
+      scrollY: -window.scrollY,
+    }).then(function (canvas) {
+      var url = canvas.toDataURL("image/png");
+      var link = document.createElement("a");
+      link.download = "meme.png";
+      link.href = url;
+      link.click();
+    });
+  }
+
   render() {
     return (
       <div>
@@ -56,11 +73,14 @@ class MemeGenerator extends Component {
 
           <button>Change Photo</button>
         </form>
-        <div className="meme">
+        <div id="meme" className="meme">
           <img src={this.state.randomImg} alt="" />
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
+        <button id="capture" onClick={this.capture}>
+          Download Meme
+        </button>
       </div>
     );
   }

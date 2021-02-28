@@ -40,6 +40,8 @@ header > p {
   position: relative;
   width: 90%;
   margin: auto;
+  height: auto;
+  width: auto;
 }
 
 .meme > img {
@@ -89,7 +91,7 @@ header > p {
   outline: #6441a5 auto 1px;
 }
 
-.meme-form > button {
+button {
   border: none;
   font-family: VT323, monospace;
   font-size: 25px;
@@ -102,11 +104,11 @@ header > p {
   align-items: center;
 }
 
-.meme-form > button:focus {
+button:focus {
   outline: none;
 }
 
-.meme-form > button:hover {
+button:hover {
   background: lavender;
   color: #6441a5;
 }
@@ -134,4 +136,8 @@ header > p {
   font-family: VT323, monospace;
   font-size: 25px;
   text-align: cen;
+}
+
+#capture {
+  margin: 20px auto;
 }
